@@ -10,7 +10,6 @@ import { localesMock } from '../data/mockPitches';
     <meta name="viewport" content="width=device-width" />
     <title>SeparaYA 📍 | Encuentra y reserva tu cancha</title>
     
-    <!-- Metadatos para WhatsApp -->
     <meta property="og:title" content="SeparaYA 📍 | Reserva tu cancha hoy" />
     <meta property="og:description" content="Encuentra las mejores canchas en Trujillo y distritos. Consulta disponibilidad directo por WhatsApp y asegura tu pichanga." />
     <meta property="og:type" content="website" />
@@ -19,56 +18,50 @@ import { localesMock } from '../data/mockPitches';
   </head>
   <body class="bg-white min-h-screen font-sans">
     
-    <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-10 border-b border-gray-100">
       <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <!-- Reemplazamos text-sep-green por text-[#489076] -->
-        <h1 class="text-2xl font-black text-[#489076] tracking-tighter">SeparaYA.</h1>
+        <h1 class="text-2xl font-black text-sep-green tracking-tighter">SeparaYA.</h1>
       </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-8">
       
-      <!-- Hero Section con tu color verde plomizo 30% directamente inyectado -->
-      <section class="bg-[#23bc41] rounded-3xl p-8 md:p-12 text-center text-white mb-10 shadow-lg">
+      <section class="bg-sep-green rounded-3xl p-8 md:p-12 text-center text-white mb-10 shadow-lg">
         <h2 class="text-3xl md:text-5xl font-bold mb-4">Encuentra dónde jugar hoy</h2>
         <p class="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
           Explora y reserva en las mejores canchas en Trujillo y distritos.
         </p>
 
-        <!-- Buscador Visual -->
         <div class="bg-white p-2 rounded-2xl md:rounded-full flex flex-col md:flex-row max-w-3xl mx-auto gap-2 shadow-md text-gray-800">
-          <!-- Textos en gris premium -->
-          <select id="filtro-distrito" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-[#93939C]">
+          
+          <select id="filtro-distrito" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-sep-gray">
             <option value="">¿En qué distrito?</option>
             <option value="trujillo">Trujillo Centro</option>
             <option value="esperanza">La Esperanza</option>
             <option value="victor-larco">Víctor Larco</option>
-            <option value="victor-larco">Víctor Larco</option>
-            <option value="victor-larco">Víctor Larco</option>
-            <option value="victor-larco">Víctor Larco</option>
+            <option value="vista-alegre">Vista Alegre</option>
+            <option value="santo-dominguito">Santo Dominguito</option>
+            <option value="la-noria">La Noria</option>
           </select>
           
           <div class="hidden md:block w-px bg-gray-200 my-2"></div>
           
-          <select id="filtro-tipo" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-[#93939C]">
+          <select id="filtro-tipo" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-sep-gray">
             <option value="">¿Qué tipo de cancha?</option>
             <option value="5vs5">Fútbol 5</option>
             <option value="7vs7">Fútbol 7</option>
           </select>
           
-          <!-- Botón de búsqueda -->
-          <button id="btn-buscar" class="bg-[#489076] text-white font-bold py-3 px-8 rounded-xl md:rounded-full hover:opacity-90 transition-opacity w-full md:w-auto shadow-md">
+          <button id="btn-buscar" class="bg-sep-green text-white font-bold py-3 px-8 rounded-xl md:rounded-full hover:opacity-90 transition-opacity w-full md:w-auto shadow-md">
             Buscar
           </button>
         </div>
       </section>
 
-      <!-- Grilla -->
       <section>
         <div class="flex justify-between items-center mb-6">
           <h3 class="text-xl font-bold text-gray-800">Canchas Populares</h3>
-          <span class="text-sm font-medium text-[#93939C] bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
+          <span class="text-sm font-medium text-sep-gray bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
             {localesMock.length} resultados
           </span>
         </div>
@@ -77,7 +70,6 @@ import { localesMock } from '../data/mockPitches';
 
     </main>
 
-    <!-- Script de filtrado -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const btnBuscar = document.getElementById('btn-buscar');

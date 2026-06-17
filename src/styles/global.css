@@ -1,4 +1,6 @@
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@theme {
+  --color-sep-green: #23bc41;
+  --color-sep-gray: #93939C;
+}
