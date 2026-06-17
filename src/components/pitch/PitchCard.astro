@@ -8,35 +8,32 @@ interface Props {
 const { local } = Astro.props;
 const cantidadCampos = local.campos.length;
 
-// Preparamos los datos para el buscador (en minúsculas y sin espacios)
+// Preparamos los datos EXACTOS para que el buscador los pueda leer
+const nombreData = local.nombre; // Pasamos el nombre tal cual, el script lo limpiará
 const distritoData = local.distrito.toLowerCase();
-// Unimos todos los tipos de cancha que tiene el local (ej. "5vs5,7vs7")
 const tiposData = local.campos.map(c => c.tipo.replace(/ /g, '').toLowerCase()).join(',');
 ---
 
-<!-- Agregamos la clase 'cancha-card' y los data-attributes -->
 <a 
   href={`/canchas/${local.id}`} 
   class="block group cancha-card" 
+  data-nombre={nombreData}
   data-distrito={distritoData} 
   data-tipo={tiposData}
 >
   <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
     
-    <!-- Imagen del Local -->
     <div class="relative w-full h-48 overflow-hidden bg-gray-200">
       <img 
         src={local.imagenes[0]} 
         alt={`Imagen de ${local.nombre}`} 
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
       />
-      <!-- Etiqueta flotante de cantidad de campos -->
       <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-gray-700">
         {cantidadCampos} {cantidadCampos === 1 ? 'campo' : 'campos'}
       </div>
     </div>
 
-    <!-- Contenido de la Tarjeta -->
     <div class="p-5">
       <div class="flex justify-between items-start gap-2">
         <h3 class="text-lg font-bold text-gray-900 leading-tight line-clamp-2">
@@ -44,7 +41,6 @@ const tiposData = local.campos.map(c => c.tipo.replace(/ /g, '').toLowerCase()).
         </h3>
       </div>
 
-      <!-- Ubicación -->
       <div class="flex items-center gap-1 mt-2 text-sm text-gray-500">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -53,12 +49,9 @@ const tiposData = local.campos.map(c => c.tipo.replace(/ /g, '').toLowerCase()).
         <span>{local.distrito}</span>
       </div>
 
-      <!-- Divisor -->
       <hr class="my-4 border-gray-100" />
 
-      <!-- Footer de la Tarjeta: Calificación y Precio -->
       <div class="flex justify-between items-center">
-        <!-- Estrellas (Mockup simple para Fase 1) -->
         <div class="flex items-center text-yellow-400">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -66,7 +59,6 @@ const tiposData = local.campos.map(c => c.tipo.replace(/ /g, '').toLowerCase()).
           <span class="ml-1 text-sm font-medium text-gray-700">{local.calificacion}</span>
         </div>
 
-        <!-- Precio base -->
         <div class="text-right">
           <span class="text-xs text-gray-500 block">Desde</span>
           <span class="text-lg font-bold text-red-600">S/ {local.precioDesde.toFixed(2)}</span>

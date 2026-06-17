@@ -32,36 +32,55 @@ import { localesMock } from '../data/mockPitches';
           Explora y reserva en las mejores canchas en Trujillo y distritos.
         </p>
 
-        <div class="bg-white p-2 rounded-2xl md:rounded-full flex flex-col md:flex-row max-w-3xl mx-auto gap-2 shadow-md text-gray-800">
+        <div class="flex flex-col items-center gap-5 w-full max-w-2xl mx-auto mt-6">
           
-          <select id="filtro-distrito" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-sep-gray">
-            <option value="">¿En qué distrito?</option>
-            <option value="trujillo">Trujillo Centro</option>
-            <option value="esperanza">La Esperanza</option>
-            <option value="victor-larco">Víctor Larco</option>
-            <option value="vista-alegre">Vista Alegre</option>
-            <option value="santo-dominguito">Santo Dominguito</option>
-            <option value="la-noria">La Noria</option>
-          </select>
-          
-          <div class="hidden md:block w-px bg-gray-200 my-2"></div>
-          
-          <select id="filtro-tipo" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-3 outline-none cursor-pointer rounded-xl font-medium text-sep-gray">
-            <option value="">¿Qué tipo de cancha?</option>
-            <option value="5vs5">Fútbol 5</option>
-            <option value="7vs7">Fútbol 7</option>
-          </select>
-          
-          <button id="btn-buscar" class="bg-sep-green text-white font-bold py-3 px-8 rounded-xl md:rounded-full hover:opacity-90 transition-opacity w-full md:w-auto shadow-md">
-            Buscar
-          </button>
+          <div class="relative w-full max-w-md">
+            <input 
+              id="filtro-texto" 
+              type="text" 
+              placeholder="Escribe el nombre" 
+              class="w-full bg-white text-gray-800 rounded-full px-6 py-3.5 pr-14 outline-none shadow-md font-medium placeholder-gray-400 focus:ring-4 focus:ring-white/30 transition-all"
+            >
+            <button 
+              id="btn-lupa"
+              aria-label="Buscar"
+              class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-sep-green hover:text-[#326955] hover:bg-green-50 rounded-full transition-all duration-200 active:scale-95 focus:outline-none"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hover:scale-110 transition-transform duration-200">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="bg-white rounded-2xl md:rounded-full flex flex-col md:flex-row w-full max-w-lg shadow-md text-gray-800 overflow-hidden px-2 py-1.5">
+            
+            <select id="filtro-distrito" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-2 outline-none cursor-pointer font-medium text-sep-gray w-full text-center md:text-left">
+              <option value="">Todos los distritos</option>
+              <option value="trujillo">Trujillo Centro</option>
+              <option value="esperanza">La Esperanza</option>
+              <option value="victor-larco">Víctor Larco</option>
+              <option value="vista-alegre">Vista Alegre</option>
+              <option value="santo-dominguito">Santo Dominguito</option>
+              <option value="la-noria">La Noria</option>
+            </select>
+            
+            <div class="hidden md:block w-px bg-gray-200 my-2"></div>
+            <hr class="md:hidden border-gray-100 mx-4">
+            
+            <select id="filtro-tipo" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-2 outline-none cursor-pointer font-medium text-sep-gray w-full text-center md:text-left">
+              <option value="">¿Qué tipo de cancha?</option>
+              <option value="5vs5">Fútbol 5</option>
+              <option value="7vs7">Fútbol 7</option>
+            </select>
+            
+          </div>
         </div>
       </section>
 
       <section>
         <div class="flex justify-between items-center mb-6">
           <h3 class="text-xl font-bold text-gray-800">Canchas Populares</h3>
-          <span class="text-sm font-medium text-sep-gray bg-gray-100 px-3 py-1 rounded-full border border-gray-200">
+          <span class="text-sm font-medium text-sep-gray bg-gray-100 px-3 py-1 rounded-full border border-gray-200" id="contador-resultados">
             {localesMock.length} resultados
           </span>
         </div>
@@ -72,30 +91,58 @@ import { localesMock } from '../data/mockPitches';
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const btnBuscar = document.getElementById('btn-buscar');
+        const inputTexto = document.getElementById('filtro-texto') as HTMLInputElement;
+        const btnLupa = document.getElementById('btn-lupa') as HTMLButtonElement;
         const selectDistrito = document.getElementById('filtro-distrito') as HTMLSelectElement;
         const selectTipo = document.getElementById('filtro-tipo') as HTMLSelectElement;
         const tarjetas = document.querySelectorAll('.cancha-card');
+        const contadorResultados = document.getElementById('contador-resultados');
 
-        if (btnBuscar) {
-          btnBuscar.addEventListener('click', () => {
-            const distritoBuscado = selectDistrito.value.toLowerCase();
-            const tipoBuscado = selectTipo.value.toLowerCase();
+        const normalizar = (texto: string) => {
+          return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        };
 
-            tarjetas.forEach((tarjeta) => {
-              const htmlTarjeta = tarjeta as HTMLElement;
-              const distritoTarjeta = htmlTarjeta.getAttribute('data-distrito') || '';
-              const tiposTarjeta = htmlTarjeta.getAttribute('data-tipo') || '';
+        const ejecutarFiltro = () => {
+          const textoBuscado = normalizar(inputTexto.value);
+          const distritoBuscado = selectDistrito.value.toLowerCase();
+          const tipoBuscado = selectTipo.value.toLowerCase();
+          
+          let canchasVisibles = 0;
 
-              const coincideDistrito = distritoBuscado === '' || distritoTarjeta.includes(distritoBuscado);
-              const coincideTipo = tipoBuscado === '' || tiposTarjeta.includes(tipoBuscado);
+          tarjetas.forEach((tarjeta) => {
+            const htmlTarjeta = tarjeta as HTMLElement;
+            
+            const nombreTarjeta = normalizar(htmlTarjeta.getAttribute('data-nombre') || '');
+            const distritoTarjeta = htmlTarjeta.getAttribute('data-distrito') || '';
+            const tiposTarjeta = htmlTarjeta.getAttribute('data-tipo') || '';
 
-              if (coincideDistrito && coincideTipo) {
-                htmlTarjeta.style.display = 'block';
-              } else {
-                htmlTarjeta.style.display = 'none';
-              }
-            });
+            const coincideTexto = textoBuscado === '' || nombreTarjeta.includes(textoBuscado);
+            const coincideDistrito = distritoBuscado === '' || distritoTarjeta.includes(distritoBuscado);
+            const coincideTipo = tipoBuscado === '' || tiposTarjeta.includes(tipoBuscado);
+
+            if (coincideTexto && coincideDistrito && coincideTipo) {
+              htmlTarjeta.style.display = 'block';
+              canchasVisibles++;
+            } else {
+              htmlTarjeta.style.display = 'none';
+            }
+          });
+
+          if (contadorResultados) {
+            contadorResultados.textContent = `${canchasVisibles} resultado${canchasVisibles !== 1 ? 's' : ''}`;
+          }
+        };
+
+        // Escuchamos la escritura en tiempo real
+        inputTexto.addEventListener('input', ejecutarFiltro);
+        selectDistrito.addEventListener('change', ejecutarFiltro);
+        selectTipo.addEventListener('change', ejecutarFiltro);
+
+        // Disparamos el filtro y ocultamos el teclado al hacer clic en la lupa
+        if (btnLupa) {
+          btnLupa.addEventListener('click', () => {
+            ejecutarFiltro();
+            inputTexto.blur(); // Quita el foco del input para esconder el teclado móvil
           });
         }
       });
