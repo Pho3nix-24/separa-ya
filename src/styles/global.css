@@ -3,4 +3,12 @@
 @theme {
   --color-sep-green: #23bc41;
   --color-sep-gray: #93939C;
+  --color-sep-dark: #0F172A;
+}
+
+/* Forzamos el fondo en todo el proyecto */
+@layer base {
+  body {
+    background-color: var(--color-sep-dark);
+  }
 }

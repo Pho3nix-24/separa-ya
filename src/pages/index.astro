@@ -9,6 +9,11 @@ import { localesMock } from '../data/mockPitches';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>SeparaYA 📍 | Encuentra y reserva tu cancha</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Importamos Outfit en peso 800 (ExtraBold) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@800&display=swap" rel="stylesheet">
     
     <meta property="og:title" content="SeparaYA 📍 | Reserva tu cancha hoy" />
     <meta property="og:description" content="Encuentra las mejores canchas en Trujillo y distritos. Consulta disponibilidad directo por WhatsApp y asegura tu pichanga." />
@@ -16,8 +21,10 @@ import { localesMock } from '../data/mockPitches';
     <meta property="og:url" content="https://separaya.vercel.app/" />
     <meta property="og:image" content="https://separaya.vercel.app/images/og-separaya.jpg" />
   </head>
-  <body class="bg-white min-h-screen font-sans">
+  <!-- Cambiamos bg-white por bg-[#372E2D] -->
+  <body class="bg-gray-50 min-h-screen font-sans">
     
+    <!-- El Header lo mantenemos blanco para que el logo resalte y divida la pantalla -->
     <header class="bg-white shadow-sm sticky top-0 z-10 border-b border-gray-100">
       <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-black text-sep-green tracking-tighter">SeparaYA.</h1>
@@ -27,7 +34,7 @@ import { localesMock } from '../data/mockPitches';
     <main class="max-w-7xl mx-auto px-4 py-8">
       
       <section class="bg-sep-green rounded-3xl p-8 md:p-12 text-center text-white mb-10 shadow-lg">
-        <h2 class="text-3xl md:text-5xl font-bold mb-4">Encuentra dónde jugar hoy</h2>
+        <h2 class="text-3xl md:text-5xl font-['Outfit'] font-extrabold mb-4">Encuentra dónde jugar hoy</h2>
         <p class="text-white/90 mb-8 max-w-2xl mx-auto text-lg">
           Explora y reserva en las mejores canchas en Trujillo y distritos.
         </p>
@@ -55,13 +62,19 @@ import { localesMock } from '../data/mockPitches';
           <div class="bg-white rounded-2xl md:rounded-full flex flex-col md:flex-row w-full max-w-lg shadow-md text-gray-800 overflow-hidden px-2 py-1.5">
             
             <select id="filtro-distrito" class="flex-1 bg-transparent border-none focus:ring-0 px-4 py-2 outline-none cursor-pointer font-medium text-sep-gray w-full text-center md:text-left">
-              <option value="">Todos los distritos</option>
+              <option value="">Todos</option>
               <option value="trujillo">Trujillo Centro</option>
-              <option value="esperanza">La Esperanza</option>
-              <option value="victor-larco">Víctor Larco</option>
-              <option value="vista-alegre">Vista Alegre</option>
-              <option value="santo-dominguito">Santo Dominguito</option>
-              <option value="la-noria">La Noria</option>
+              <option value="la-esperanza">La Esperanza</option>
+              <option value="el-porvenir">El Porvenir</option>
+              <option value="victor-larco">Víctor Larco Herrera</option>
+              <option value="huanchaco">Huanchaco</option>
+              <option value="florencia-de-mora">Florencia de Mora</option>
+              <option value="laredo">Laredo</option>
+              <option value="moche">Moche</option>
+              <option value="salaverry">Salaverry</option>
+              <option value="poroto">Poroto</option>
+              <option value="simbal">Simbal</option>
+              <option value="alto-trujillo">Alto Trujillo</option>
             </select>
             
             <div class="hidden md:block w-px bg-gray-200 my-2"></div>
@@ -79,7 +92,8 @@ import { localesMock } from '../data/mockPitches';
 
       <section>
         <div class="flex justify-between items-center mb-6">
-          <h3 class="text-xl font-bold text-gray-800">Canchas Populares</h3>
+          <!-- Cambiamos el color de este texto a blanco para que contraste con el fondo oscuro -->
+          <h3 class="text-xl font-bold text-white">Canchas Populares</h3>
           <span class="text-sm font-medium text-sep-gray bg-gray-100 px-3 py-1 rounded-full border border-gray-200" id="contador-resultados">
             {localesMock.length} resultados
           </span>
@@ -133,16 +147,20 @@ import { localesMock } from '../data/mockPitches';
           }
         };
 
-        // Escuchamos la escritura en tiempo real
-        inputTexto.addEventListener('input', ejecutarFiltro);
+        inputTexto.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            ejecutarFiltro();
+            inputTexto.blur();
+          }
+        });
+
         selectDistrito.addEventListener('change', ejecutarFiltro);
         selectTipo.addEventListener('change', ejecutarFiltro);
 
-        // Disparamos el filtro y ocultamos el teclado al hacer clic en la lupa
         if (btnLupa) {
           btnLupa.addEventListener('click', () => {
             ejecutarFiltro();
-            inputTexto.blur(); // Quita el foco del input para esconder el teclado móvil
+            inputTexto.blur();
           });
         }
       });
