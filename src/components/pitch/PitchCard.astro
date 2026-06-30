@@ -10,7 +10,7 @@ const cantidadCampos = local.campos.length;
 
 // Preparamos los datos EXACTOS para que el buscador los pueda leer
 const nombreData = local.nombre; // Pasamos el nombre tal cual, el script lo limpiará
-const distritoData = local.distrito.toLowerCase();
+const distritoData = local.distrito.toLowerCase().replace(/ /g, '-').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 const tiposData = local.campos.map(c => c.tipo.replace(/ /g, '').toLowerCase()).join(',');
 ---
 
