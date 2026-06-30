@@ -214,7 +214,7 @@ export const localesMock: Local[] = [
   },
   {
     id: "complejo-deportivo-florencia-de-mora",
-    nombre: "Complejo Deportivo Municipal Florencia de Mora",
+    nombre: "Complejo Deportivo Municipal",
     distrito: "Florencia de Mora",
     direccion: "Calle 12 de Noviembre 820 - Florencia de Mora",
     imagenes: [
@@ -287,7 +287,7 @@ export const localesMock: Local[] = [
   },
   {
     id: "estadio-municipal-salaverry",
-    nombre: "Estadio e Instalaciones Municipales de Salaverry",
+    nombre: "Estadio e Instalaciones Municipales",
     distrito: "Salaverry",
     direccion: "Av. La Marina s/n (Cercano a la playa) - Salaverry",
     imagenes: [
