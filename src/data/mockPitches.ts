@@ -31,7 +31,7 @@ export const localesMock: Local[] = [
     distrito: "Trujillo",
     direccion: "Av. 9 de Octubre 148 - Urb. Miraflores",
     imagenes: [
-      "https://scontent.ftru3-1.fna.fbcdn.net/v/t39.30808-6/472552604_1018671456946008_2104266298523843127_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x720&ctp=s1280x720&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEY2BZy84TDel0-5tJYRVOtEgr5UJd-nV0SCvlQl36dXQXI63sTCDdylC15ymLQwKMuI9TP7P12VkjdiwlsFL4t&_nc_ohc=TONgdFHyfMEQ7kNvwGGOCAw&_nc_oc=AdqtPWiG1W80FBw5R9Wg9oDNvF_5rUVNPymuPU9Ps5HYmREijOZFImn8IDW8JnzTYecoE1EJG678huxFEVtzciHf&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=N45SpOw2kFd9LSwnbdG7Fg&_nc_ss=7b2a8&oh=00_Af_eRc4UQp6iTvLFYffK-dFRmoAJPw1-3dLmdVYEehbQ4Q&oe=6A37B2E1"
+      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyaIQOlENs48LxSHbahRUbrTxWThBBMu41Y2VBOu9Z_DtZS8HHnr1H27zLH-h812W3cWThBM86Bq1gSzVSywRSkWpqtszasjErbnWDtipzO0S5lIy0rqOwIIwITTQAI1Y_jD4=s1360-w1360-h1020-rw"
     ],
     precioDesde: 60,
     calificacion: 4.5,
