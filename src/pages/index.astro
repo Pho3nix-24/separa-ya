@@ -149,7 +149,7 @@ import { localesMock } from '../data/mockPitches';
               </div>
               <select id="filtro-orden" class="w-full bg-white text-gray-800 border border-gray-200 rounded-xl pl-9 pr-6 py-3 outline-none shadow-md font-medium text-xs cursor-pointer appearance-none truncate">
                 <option value="recomendado">Recomendado</option>
-                <option value="precio">Más barato primero</option>
+                <option value="precio">Más barato</option>
                 <option value="distancia" id="opt-distancia" disabled>Distancia (GPS apagado)</option>
               </select>
               <div class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
@@ -307,14 +307,14 @@ import { localesMock } from '../data/mockPitches';
                 gpsActivo = true;
 
                 // Actualizar botón
-                gpsText.textContent = "Cercanos Activo";
+                gpsText.textContent = "Cercano";
                 gpsStatusDot.className = "w-2 h-2 bg-yellow-400 rounded-full inline-block mr-1 animate-pulse";
                 btnGps.classList.remove('bg-slate-800');
                 btnGps.classList.add('bg-red-500', 'border-red-500');
 
                 // Habilitar opción de ordenamiento
                 optDistancia.disabled = false;
-                optDistancia.textContent = "Más cercano primero";
+                optDistancia.textContent = "Más cercano";
                 selectOrden.value = "distancia";
 
                 // Calcular distancias y mostrar badges
