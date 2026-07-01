@@ -19,6 +19,8 @@ export interface Local {
   whatsapp: string;    // ¡Vital para nuestro CTA de la Fase 1!
   servicios: string[]; // ej. ['chalecos', 'estacionamiento', 'wifi']
   campos: Campo[];
+  latitud: number;     // Coordenada latitud para geolocalización
+  longitud: number;    // Coordenada longitud para geolocalización
 }
 
 // 3. Creamos nuestra base de datos simulada (Mock Data)
@@ -29,7 +31,7 @@ export const localesMock: Local[] = [
     distrito: "Trujillo",
     direccion: "Av. 9 de Octubre 148 - Urb. Miraflores",
     imagenes: [
-      "https://scontent.ftru3-1.fna.fbcdn.net/v/t39.30808-6/472552604_1018671456946008_2104266298523843127_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x720&ctp=s1280x720&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEY2BZy84TDel0-5tJYRVOtEgr5UJd-nV0SCvlQl36dXQXI63sTCDdylC15ymLQwKMuI9TP7P12VkjdiwlsFL4t&_nc_ohc=-mBmK0fiUOUQ7kNvwFD-uPT&_nc_oc=Ado4aXODf7C24kUobcxmDJHd9KU4xWJALZwsmNcMpbwPfcuotN3bEM1YoM9DLbxVnoXHiSvKOsXw4JkxQKqRFnwZ&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=AENpcAdvOVcEdRKpj5b0_g&_nc_ss=7b2a8&oh=00_AQCfpvWcUAInUu9rJMLTHRuoWs4kjjJ-id4rLfu5UO-i-A&oe=6A48D661"
+      "https://scontent.ftru3-1.fna.fbcdn.net/v/t39.30808-6/472552604_1018671456946008_2104266298523843127_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x720&ctp=s1280x720&_nc_cat=110&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeEY2BZy84TDel0-5tJYRVOtEgr5UJd-nV0SCvlQl36dXQXI63sTCDdylC15ymLQwKMuI9TP7P12VkjdiwlsFL4t&_nc_ohc=TONgdFHyfMEQ7kNvwGGOCAw&_nc_oc=AdqtPWiG1W80FBw5R9Wg9oDNvF_5rUVNPymuPU9Ps5HYmREijOZFImn8IDW8JnzTYecoE1EJG678huxFEVtzciHf&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=N45SpOw2kFd9LSwnbdG7Fg&_nc_ss=7b2a8&oh=00_Af_eRc4UQp6iTvLFYffK-dFRmoAJPw1-3dLmdVYEehbQ4Q&oe=6A37B2E1"
     ],
     precioDesde: 60,
     calificacion: 4.5,
@@ -43,7 +45,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 60
       }
-    ]
+    ],
+    latitud: -8.1025,
+    longitud: -79.0210
   },
   {
     id: "los-peloteros",
@@ -72,7 +76,9 @@ export const localesMock: Local[] = [
         superficie: "Sintética",
         precioHora: 90
       }
-    ]
+    ],
+    latitud: -8.1342,
+    longitud: -79.0381
   },
   {
     id: "soccer-club-el-bunker",
@@ -101,7 +107,9 @@ export const localesMock: Local[] = [
         superficie: "Sintética",
         precioHora: 70
       }
-    ]
+    ],
+    latitud: -8.1311,
+    longitud: -79.0435
   },
   {
     id: "polideportivo-claro",
@@ -123,7 +131,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 50
       }
-    ]
+    ],
+    latitud: -8.1362,
+    longitud: -79.0412
   },
   {
     id: "complejo-deportivo-mansiche",
@@ -152,7 +162,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 40
       }
-    ]
+    ],
+    latitud: -8.1072,
+    longitud: -79.0345
   },
   {
     id: "polideportivo-inca-roca",
@@ -181,7 +193,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 60
       }
-    ]
+    ],
+    latitud: -8.0935,
+    longitud: -79.0062
   },
   {
     id: "gol-peru-sports-complex",
@@ -210,11 +224,13 @@ export const localesMock: Local[] = [
         superficie: "Sintética",
         precioHora: 65
       }
-    ]
+    ],
+    latitud: -8.0772,
+    longitud: -79.0520
   },
   {
     id: "complejo-deportivo-florencia-de-mora",
-    nombre: "Complejo Deportivo Municipal",
+    nombre: "Complejo Deportivo Municipal Florencia de Mora",
     distrito: "Florencia de Mora",
     direccion: "Calle 12 de Noviembre 820 - Florencia de Mora",
     imagenes: [
@@ -232,7 +248,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 30
       }
-    ]
+    ],
+    latitud: -8.0862,
+    longitud: -79.0212
   },
   {
     id: "complejo-polideportivo-huanchaco",
@@ -261,7 +279,9 @@ export const localesMock: Local[] = [
         superficie: "Arena",
         precioHora: 50
       }
-    ]
+    ],
+    latitud: -8.0735,
+    longitud: -79.1170
   },
   {
     id: "polideportivo-huaca-del-sol",
@@ -283,11 +303,13 @@ export const localesMock: Local[] = [
         superficie: "Sintética",
         precioHora: 45
       }
-    ]
+    ],
+    latitud: -8.1685,
+    longitud: -79.0090
   },
   {
     id: "estadio-municipal-salaverry",
-    nombre: "Estadio e Instalaciones Municipales",
+    nombre: "Estadio e Instalaciones Municipales de Salaverry",
     distrito: "Salaverry",
     direccion: "Av. La Marina s/n (Cercano a la playa) - Salaverry",
     imagenes: [
@@ -312,7 +334,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 40
       }
-    ]
+    ],
+    latitud: -8.2235,
+    longitud: -78.9770
   },
   {
     id: "complejo-deportivo-laredo",
@@ -334,7 +358,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 35
       }
-    ]
+    ],
+    latitud: -8.0895,
+    longitud: -78.9610
   },
   {
     id: "losa-deportiva-shiran",
@@ -356,7 +382,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 25
       }
-    ]
+    ],
+    latitud: -8.0210,
+    longitud: -78.7840
   },
   {
     id: "losa-deportiva-municipal-simbal",
@@ -378,7 +406,9 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 30
       }
-    ]
+    ],
+    latitud: -7.9820,
+    longitud: -78.8120
   },
   {
     id: "complejo-deportivo-barrio-4",
@@ -407,6 +437,8 @@ export const localesMock: Local[] = [
         superficie: "Losa",
         precioHora: 40
       }
-    ]
+    ],
+    latitud: -8.0680,
+    longitud: -78.9880
   }
 ];
