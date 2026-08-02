@@ -83,7 +83,7 @@ export const localesMock: Local[] = [
   {
     id: "soccer-club-el-bunker",
     nombre: "Soccer Club - El Búnker",
-    distrito: "Trujillo Centro",
+    distrito: "Trujillo",
     direccion: "Dirección: Urb Las Orquídeas, Trujillo 13011",
     imagenes: [
       "/img/trux_bunker.png"
