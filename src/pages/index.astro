@@ -293,57 +293,70 @@ import { localesMock } from '../data/mockPitches';
           }
         };
 
-        // Configuración y eventos del GPS
-        btnGps.addEventListener('click', () => {
-          if (!gpsActivo) {
-            // Activar GPS
-            gpsText.textContent = "Obteniendo...";
-            gpsStatusDot.className = "w-2 h-2 bg-yellow-400 rounded-full inline-block mr-1 animate-ping";
+        const obtenerUbicacion = (highAccuracy: boolean) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              userLat = position.coords.latitude;
+              userLng = position.coords.longitude;
+              gpsActivo = true;
 
-            navigator.geolocation.getCurrentPosition(
-              (position) => {
-                userLat = position.coords.latitude;
-                userLng = position.coords.longitude;
-                gpsActivo = true;
+              // Actualizar botón
+              gpsText.textContent = "Cercano";
+              gpsStatusDot.className = "w-2 h-2 bg-yellow-400 rounded-full inline-block mr-1 animate-pulse";
+              btnGps.classList.remove('bg-slate-800');
+              btnGps.classList.add('bg-red-500', 'border-red-500');
 
-                // Actualizar botón
-                gpsText.textContent = "Cercano";
-                gpsStatusDot.className = "w-2 h-2 bg-yellow-400 rounded-full inline-block mr-1 animate-pulse";
-                btnGps.classList.remove('bg-slate-800');
-                btnGps.classList.add('bg-red-500', 'border-red-500');
+              // Habilitar opción de ordenamiento
+              optDistancia.disabled = false;
+              optDistancia.textContent = "Más cercano";
+              selectOrden.value = "distancia";
 
-                // Habilitar opción de ordenamiento
-                optDistancia.disabled = false;
-                optDistancia.textContent = "Más cercano";
-                selectOrden.value = "distancia";
+              // Calcular distancias y mostrar badges
+              tarjetas.forEach(tarjeta => {
+                const lat = parseFloat(tarjeta.getAttribute('data-lat') || '0');
+                const lng = parseFloat(tarjeta.getAttribute('data-lng') || '0');
+                const dist = calcularDistancia(userLat!, userLng!, lat, lng);
+                tarjeta.setAttribute('data-distancia-val', dist.toString());
+                
+                const badge = tarjeta.querySelector('.distancia-badge') as HTMLElement;
+                if (badge) {
+                  badge.textContent = `a ${dist.toFixed(1)} km`;
+                  badge.classList.remove('hidden');
+                }
+              });
 
-                // Calcular distancias y mostrar badges
-                tarjetas.forEach(tarjeta => {
-                  const lat = parseFloat(tarjeta.getAttribute('data-lat') || '0');
-                  const lng = parseFloat(tarjeta.getAttribute('data-lng') || '0');
-                  const dist = calcularDistancia(userLat!, userLng!, lat, lng);
-                  tarjeta.setAttribute('data-distancia-val', dist.toString());
-                  
-                  const badge = tarjeta.querySelector('.distancia-badge') as HTMLElement;
-                  if (badge) {
-                    badge.textContent = `a ${dist.toFixed(1)} km`;
-                    badge.classList.remove('hidden');
-                  }
-                });
-
-                ejecutarFiltro();
-              },
-              (error) => {
-                console.error("Error al obtener ubicación:", error);
+              ejecutarFiltro();
+            },
+            (error) => {
+              console.warn(`GPS error (accuracy=${highAccuracy}):`, error);
+              // Si falla el primer intento con alta precisión por timeout/unavailable, intentamos el fallback con baja precisión
+              if (highAccuracy && (error.code === error.TIMEOUT || error.code === error.POSITION_UNAVAILABLE)) {
+                console.log("Reintentando geolocalización con baja precisión...");
+                obtenerUbicacion(false);
+              } else {
                 alert("No pudimos acceder a tu ubicación. Por favor, activa los permisos de GPS de tu navegador.");
                 
                 // Restablecer botón
                 gpsText.textContent = "Cerca de mí";
                 gpsStatusDot.className = "w-2 h-2 bg-slate-500 rounded-full inline-block mr-1";
                 btnGps.className = "w-full bg-slate-800 hover:bg-slate-700 active:scale-95 text-white border border-slate-700/50 rounded-xl px-2 py-3 flex items-center justify-center gap-1 font-bold text-xs shadow-md transition-all duration-200 cursor-pointer";
-              },
-              { enableHighAccuracy: false, maximumAge: 300000, timeout: 10000 }
-            );
+              }
+            },
+            { 
+              enableHighAccuracy: highAccuracy, 
+              timeout: highAccuracy ? 8000 : 12000, 
+              maximumAge: highAccuracy ? 60000 : 300000 
+            }
+          );
+        };
+
+        // Configuración y eventos del GPS
+        btnGps.addEventListener('click', () => {
+          if (!gpsActivo) {
+            // Activar GPS
+            gpsText.textContent = "Obteniendo...";
+            gpsStatusDot.className = "w-2 h-2 bg-yellow-400 rounded-full inline-block mr-1 animate-ping";
+            obtenerUbicacion(true);
           } else {
             // Desactivar GPS
             gpsActivo = false;

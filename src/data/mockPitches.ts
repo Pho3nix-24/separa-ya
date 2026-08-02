@@ -31,7 +31,7 @@ export const localesMock: Local[] = [
     distrito: "Trujillo",
     direccion: "Av. 9 de Octubre 148 - Urb. Miraflores",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHyaIQOlENs48LxSHbahRUbrTxWThBBMu41Y2VBOu9Z_DtZS8HHnr1H27zLH-h812W3cWThBM86Bq1gSzVSywRSkWpqtszasjErbnWDtipzO0S5lIy0rqOwIIwITTQAI1Y_jD4=s1360-w1360-h1020-rw"
+      "/img/trux_mochica.png"
     ],
     precioDesde: 60,
     calificacion: 4.5,
@@ -53,9 +53,9 @@ export const localesMock: Local[] = [
     id: "los-peloteros",
     nombre: "Los Peloteros",
     distrito: "Victor Larco",
-    direccion: "Av. Los Colibríes Mz. X Lote 54",
+    direccion: "VXG4+5H2, Av. Los Colibríes, Trujillo 13008",
     imagenes: [
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNpjUiPw0zjzwIIelvPA0J7a-nAtoi4iyUQmOoHTwpJr571M7RmxqjpDo&s=10"
+      "/img/trux_peloteros.png"
     ],
     precioDesde: 70,
     calificacion: 4.0,
@@ -83,10 +83,10 @@ export const localesMock: Local[] = [
   {
     id: "soccer-club-el-bunker",
     nombre: "Soccer Club - El Búnker",
-    distrito: "Victor Larco",
-    direccion: "Av. Larco 1230 - Vista Alegre",
+    distrito: "Trujillo Centro",
+    direccion: "Dirección: Urb Las Orquídeas, Trujillo 13011",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHi40mi6o1OCggBozhjqhmgcYmUGlX-Y8U2UutCYlCHGhdER3kgttSGjFzTZd8KmPGRiV1qR_CEcHfR73pzZa62rTvpxidOAjYL-dcx83aCkF8NLBeiKZKrPM2hremUGBdfnctN=w534-h240-k-no"
+      "/img/trux_bunker.png"
     ],
     precioDesde: 70,
     calificacion: 4.6,
@@ -115,9 +115,9 @@ export const localesMock: Local[] = [
     id: "polideportivo-claro",
     nombre: "Polideportivo Claro",
     distrito: "Victor Larco",
-    direccion: "Calle Las Flores 450 - Vista Alegre",
+    direccion: "Tito CondeMayta 1048, Víctor Larco Herrera 13003",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEqZVfMSkp-_x-2Hr6c0sr_hFUHt8yJS4W40jmtnBARHQXe0o7omQ9ehKpskcAGcdPMRgX1DeFQO-RgOz9hc8-vc7cZU1AfYkFL2pYNwsPltPinINWmp_H0fmud2JzEyjKuMwdjEQ=s1360-w1360-h1020-rw"
+      "/img/trux_claro.png"
     ],
     precioDesde: 50,
     calificacion: 4.2,
@@ -139,9 +139,9 @@ export const localesMock: Local[] = [
     id: "complejo-deportivo-mansiche",
     nombre: "Complejo Deportivo Mansiche",
     distrito: "Trujillo",
-    direccion: "Av. Mansiche s/n (Frente al Estadio Mansiche)",
+    direccion: "Av Mansiche 379, Trujillo 13001",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFX6ehjGeEqraFdL-6fB5P5kFxuisB-OkS6EkhefTy6q4DrkMbmDO91K6-PndLVGyM0QMx62izMkBHOCd4K36p2S8nlfFLdkOFeDiJTJsLvPHKXdsk_zsxNzuiGdg8FG5Sufgc0=w408-h306-k-no"
+      "/img/trux_mansiche.png"
     ],
     precioDesde: 40,
     calificacion: 4.3,
@@ -170,9 +170,9 @@ export const localesMock: Local[] = [
     id: "polideportivo-inca-roca",
     nombre: "Polideportivo Inca Roca",
     distrito: "El Porvenir",
-    direccion: "Av. Pumacahua 1200 - El Porvenir",
+    direccion: "Jr. Inca Roca 1060-1218, El Porvenir 13003",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGI32N1zZvwF941bt3x3kQrl5MAjTB42ASP6y7RO5feLAOR-ZZPkQut82fomCPXyKTqIBfS6sbtZljtI1vljDjPg54WsBzBpEOGjbXS5h5KKaQdLGRI1bdBdCeFk8kc5TkHOwNsdA=s1360-w1360-h1020-rw"
+      "/img/trux_inca.png"
     ],
     precioDesde: 60,
     calificacion: 4.1,
@@ -203,7 +203,7 @@ export const localesMock: Local[] = [
     distrito: "La Esperanza",
     direccion: "Av. Parque Industrial 240 - La Esperanza",
     imagenes: [
-      "https://scontent.ftru3-1.fna.fbcdn.net/v/t1.6435-9/81189651_492897541355290_4657301964135071744_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x640&ctp=s1280x640&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHzSTnpzPh3Pb4LDyDI7RKXlJD-ODn1hlGUkP44OfWGUeMCNB2J92coRMwBmQl75ubxbLYQ9btxBOMzDfCB2INV&_nc_ohc=qs6jHGVEGuEQ7kNvwFFS0ek&_nc_oc=AdrNA-m7nP5zHJXw6batiGFXVIZbyQr1ZTS0vbmoid44cCOHLbmlXW9KbEe5jAC-Sm9DJTroQQK-V1JxuIW53ThT&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=F-l9vJ1Con1VGX8CgONGIw&_nc_ss=7b2a8&oh=00_AQDiGb8zSJ5CqFBaXkyIhR4PEhSay9bD8Shx12mg0TKoCQ&oe=6A6AA4D5"
+      "/img/trux_gol.png"
     ],
     precioDesde: 65,
     calificacion: 4.4,
@@ -229,12 +229,12 @@ export const localesMock: Local[] = [
     longitud: -79.0520
   },
   {
-    id: "complejo-deportivo-florencia-de-mora",
-    nombre: "Complejo Deportivo Municipal Florencia de Mora",
+    id: "club-pueblo-florencia-de-mora",
+    nombre: "Club del Pueblo Florencia de Mora",
     distrito: "Florencia de Mora",
-    direccion: "Calle 12 de Noviembre 820 - Florencia de Mora",
+    direccion: "WXCJ+MGF, 25 De Diciembre, Florencia de Mora 13003",
     imagenes: [
-      "https://lh3.googleusercontent.com/grass-cs/ANxoTn1v03zS95GB0PocsjQYPlhNSBLmh29nLeJvJOHQb4ROGEPr6K8AC2cn2WdPsFju_5i4Z4IM725JGXV2hvjrH_qlyNernJjVWPy5tt0utBgbIbUS1A6liqFDmrMdrnuxXbAVyejU=s1360-w1360-h1020-rw"
+      "/img/trux_florencia.png"
     ],
     precioDesde: 30,
     calificacion: 4.0,
@@ -256,9 +256,9 @@ export const localesMock: Local[] = [
     id: "complejo-polideportivo-huanchaco",
     nombre: "Complejo Polideportivo de Huanchaco",
     distrito: "Huanchaco",
-    direccion: "Av. La Rivera s/n (Frente a la playa) - Huanchaco",
+    direccion: "WV6H+CR4, Huanchaco 13000",
     imagenes: [
-      "https://larepublica.cronosmedia.glr.pe/migration/images/O2XL2R7HOZCXRISFK4OVG3TCLE.jpg"
+      "/img/trux_huanchaco.png"
     ],
     precioDesde: 50,
     calificacion: 4.5,
@@ -287,9 +287,9 @@ export const localesMock: Local[] = [
     id: "polideportivo-huaca-del-sol",
     nombre: "Polideportivo Huaca del Sol",
     distrito: "Moche",
-    direccion: "Calle Manco Cápac 150 - Moche Pueblo",
+    direccion: "Calle Manco Cápac 150 - Moche Pueblo Trujillo 13011",
     imagenes: [
-      "https://scontent.ftru3-1.fna.fbcdn.net/v/t39.30808-6/657493061_1237356885215984_3440134174071701513_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFegeDw5KwVCV9aGbPhzRD5COY_x8VCBPoI5j_HxUIE-rVX5qPXifycDjBsauBX58hUcrw1khfiuPW0RoxKsc2-&_nc_ohc=Bz_0Kw5AhHsQ7kNvwHVUIaM&_nc_oc=AdpziQgeR3YZ7-KIma7K80l1ccraVjlriTgyb3RFeUbiv8F4K4lWPUGPFp7IIeu3jpWQCs6JMCvtdwLvyfZPEqmb&_nc_zt=23&_nc_ht=scontent.ftru3-1.fna&_nc_gid=DNu7hn9muMq7X66_yAQqNA&_nc_ss=7b2a8&oh=00_AQDZaJzD697tjHSoEa4Vkx2qVRy-6O1s5u1TOuUKHzqfHw&oe=6A490AE1"
+      "/img/trux_huacasol.png"
     ],
     precioDesde: 45,
     calificacion: 4.3,
@@ -311,9 +311,9 @@ export const localesMock: Local[] = [
     id: "estadio-municipal-salaverry",
     nombre: "Estadio e Instalaciones Municipales de Salaverry",
     distrito: "Salaverry",
-    direccion: "Av. La Marina s/n (Cercano a la playa) - Salaverry",
+    direccion: "Av. La Marina s/n (Cercano a la playa) - Q2JG+2HW, Salaverry 13611",
     imagenes: [
-      "https://scontent.ftru1-1.fna.fbcdn.net/v/t39.30808-6/559576785_1212164924265354_6891768546953069226_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEbqYHdAJGAnJIgZngLMa1FjHYR9xN9XeiMdhH3E31d6HMyQau0usLTG63ou41GsYAi01rNA8ZC1jOEj7hKj56j&_nc_ohc=8LzM-0uQJe4Q7kNvwFGtNBa&_nc_oc=Adq_jGAgfRiaMa69TfiBjzBsvNpuJtpeTBUIY0JRrQx8V8k9j1IiWoFFfm-R7EFJugZChaFphF1wYVDz6r3jww_7&_nc_zt=23&_nc_ht=scontent.ftru1-1.fna&_nc_gid=HBzTFaP_AJbZxtzDbPgqPA&_nc_ss=7b2a8&oh=00_AQDgZie0LOSiSRke3BSwWkGut81huH0NCs1hjCh5l406nA&oe=6A48FB4C"
+      "/img/trux_munisalaverry.png"
     ],
     precioDesde: 40,
     calificacion: 4.1,
@@ -342,9 +342,9 @@ export const localesMock: Local[] = [
     id: "complejo-deportivo-laredo",
     nombre: "Complejo Deportivo de Laredo",
     distrito: "Laredo",
-    direccion: "Av. El Centenario 300 - Laredo",
+    direccion: "Av. El Centenario 300 - W25P+X86 Polideportivo, Laredo 13101",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFpMEzNLwVkfcUjSVA-woUzPaPK-il_ip1CagjUDQhPmsIdTwU6XjQG41kLH44XjwUyBW7dtCDYSejoxUNw5YSxuXfQ8_b-PKRJRYXKeqUgkolryix7d5W07NKoEGwJ7s0wPEfA=s1360-w1360-h1020-rw"
+      "/img/trux_laredo.png"
     ],
     precioDesde: 35,
     calificacion: 4.2,
@@ -368,7 +368,7 @@ export const localesMock: Local[] = [
     distrito: "Poroto",
     direccion: "Carretera Industrial km 40 - Centro Poblado Shirán",
     imagenes: [
-      "https://scontent.ftru1-1.fna.fbcdn.net/v/t39.30808-6/647411631_1503407691787538_2342699231621212418_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeF5E7zb3PLZth_DRyds_aim99cyrOOonc731zKs46idzpyNinxy_DA_cvKiTuLgLnWXYeY9123AhQHLHu8HbMjR&_nc_ohc=E1ryn0UX1yMQ7kNvwFD6Lmq&_nc_oc=AdpBf0tvwmXkLm9LrgHHi56N8TJNR3WiyC77ghFLvrMFoP10SmgOrbeaq-Nuf1pZlYR3g4zEwvXXz1QraI80CJ_C&_nc_zt=23&_nc_ht=scontent.ftru1-1.fna&_nc_gid=_pUPc1yiEdL01XG3owEvnQ&_nc_ss=7b2a8&oh=00_AQCcJqqL0Rat46f4_pD29Cj5sQ7tm9b1C_NNjPHW8KpCxQ&oe=6A48FB85"
+      "/img/trux_shiran.png"
     ],
     precioDesde: 25,
     calificacion: 4.0,
@@ -390,9 +390,9 @@ export const localesMock: Local[] = [
     id: "losa-deportiva-municipal-simbal",
     nombre: "Losa Deportiva Municipal de Simbal",
     distrito: "Simbal",
-    direccion: "Calle Trujillo 120 (Plaza de Armas) - Simbal",
+    direccion: "Calle Trujillo 120 (Plaza de Armas) - 25PR+37M, Simbal 13105",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAH9ZB6rHVdsqSBYZXAl7CEesMW0R5sOtRFDGtt8EkVNMsqWkwTSCRMyr2hXljx6dfScTVRoHeuGaH5mJKZrjZlaiohe4apFfXBqB-jJ3ugySVB6x-4ksxa4ZdQYsWS7F4HtXsRhxA=s1360-w1360-h1020-rw"
+      "/img/trux_simbal.png"
     ],
     precioDesde: 30,
     calificacion: 4.2,
@@ -414,9 +414,9 @@ export const localesMock: Local[] = [
     id: "complejo-deportivo-barrio-4",
     nombre: "Complejo Deportivo del Barrio 4",
     distrito: "Alto Trujillo",
-    direccion: "Mz. D Lote 15 - Barrio 4 - Alto Trujillo",
+    direccion: "Mz. D Lote 15 - Barrio 4 - Alto Trujillo, El Porvenir 13003",
     imagenes: [
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAEN9NHTdNuXAKrFsFG2fxlDsXCaOwchv2pI-DGrnXComz4p2zDX-PR40dmgDPiH-agM0cA3w3UwDgaQHN30htM2aHBQbX_F04hDqV2YsxDy5QWdAe03B6SzRBVnjRNj5O7JHLAK7EBwwv7M=s1360-w1360-h1020-rw"
+      "/img/trux_barrio4.png"
     ],
     precioDesde: 40,
     calificacion: 4.0,
