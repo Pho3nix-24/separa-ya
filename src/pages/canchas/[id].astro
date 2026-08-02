@@ -28,7 +28,10 @@ const { local } = Astro.props;
     
     <!-- Header minimalista -->
     <header class="bg-slate-900/80 backdrop-blur-md sticky top-0 z-20 border-b border-slate-800/80 px-4 py-4">
-      <div class="max-w-3xl mx-auto">
+      <div class="max-w-3xl mx-auto flex justify-between items-center">
+        <a href="/" class="group select-none active:scale-95 transition-transform duration-150">
+          <span class="text-2xl font-black text-sep-green tracking-tighter hover:brightness-110 transition-all">SeparaYA.</span>
+        </a>
         <a href="/" class="text-sep-green font-bold flex items-center gap-2 hover:text-[#326955] transition-colors">
           <!-- Icono de flecha -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
